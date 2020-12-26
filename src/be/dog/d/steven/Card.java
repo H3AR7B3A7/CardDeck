@@ -2,6 +2,7 @@ package be.dog.d.steven;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Card {
     private String face, suit;
@@ -68,5 +69,24 @@ public class Card {
     @Override
     public String toString() {
         return String.format("%s of %s", face, suit);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Card other = (Card) obj;
+        if (!Objects.equals(this.face, other.face)) {
+            return false;
+        }
+
+
+        return Objects.equals(this.suit, other.suit);
     }
 }
